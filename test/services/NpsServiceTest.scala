@@ -52,7 +52,7 @@ class NpsServiceTest extends UnitSpec with MockitoSugar with ScalaFutures {
       }
     }
   }
-
+  
   "getPayload" should {
     "return a successful future" in new TestService {
       val mockPayload = mock[JsValue]

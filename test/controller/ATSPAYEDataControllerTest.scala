@@ -40,7 +40,7 @@ class ATSPAYEDataControllerTest extends UnitSpec with MockitoSugar with WithFake
     val request = FakeRequest()
     override lazy val npsService: NpsService = mock[NpsService]
   }
-
+  
   "getRawAtsData" should {
     "return ok" in new TestController {
       when(npsService.getRawPayload(eqTo(testNino), eqTo(2018))(any[HeaderCarrier]))
@@ -60,7 +60,7 @@ class ATSPAYEDataControllerTest extends UnitSpec with MockitoSugar with WithFake
       }
     }
   }
-
+  
   "getAtsData" should {
     "return ok" in new TestController {
       when(npsService.getPayload(eqTo(testNino), eqTo(2018))(any[HeaderCarrier]))

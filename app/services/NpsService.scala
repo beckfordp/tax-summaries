@@ -20,16 +20,16 @@ import connectors.NPSConnector
 import play.api.libs.json.{JsObject, JsValue}
 import transformers.PAYETransformer._
 import uk.gov.hmrc.http.HeaderCarrier
-
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
+
 
 trait NpsService {
   def npsConnector: NPSConnector
 
   def getRawPayload(nino: String, taxYear: Int)(implicit hc: HeaderCarrier): Future[JsValue] =
     npsConnector.connectToPayeTaxSummary(nino, taxYear)
-
+  
   def getPayload(nino: String, taxYear: Int)(implicit hc: HeaderCarrier): Future[JsValue] =
     for {
       payeJson       <- npsConnector.connectToPayeTaxSummary(nino, taxYear)

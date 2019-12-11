@@ -36,7 +36,6 @@ trait ATSPAYEDataController extends BaseController {
       npsService.getRawPayload(nino, taxYear) map { Ok(_) }
     }
   }
-
   def getATSData(utr: String, tax_year: Int) = Action.async { implicit request =>
     {
       npsService.getPayload(utr, tax_year) map { Ok(_) }
