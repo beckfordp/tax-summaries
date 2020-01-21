@@ -453,7 +453,7 @@ class PAYETransformerTest extends UnitSpec with PAYETransformer with GuiceOneApp
           |    "href" : "https://digital.ws.ibt.hmrc.gov.uk/individuals/annual-tax-summary/AB654321B/2018"
           |  } ],
           |  "nino" : "AB654321B",
-          |  "scottish_income_data" : {
+          |  "scottish_income_tax" : {
           |    "payload" : {
           |      "scottish_intermediate_rate_tax" : {
           |        "amount" : 4080.3,
