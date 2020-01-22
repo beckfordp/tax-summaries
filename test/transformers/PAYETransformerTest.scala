@@ -447,13 +447,13 @@ class PAYETransformerTest extends UnitSpec with PAYETransformer with GuiceOneApp
       val expectedScottishJson =
         """
           |{
-          | "taxYear" : 2018,
+          |  "nino" : "AB654321B",
           |  "lnks" : [ {
           |    "rel" : "self",
           |    "href" : "https://digital.ws.ibt.hmrc.gov.uk/individuals/annual-tax-summary/AB654321B/2018"
           |  } ],
-          |  "nino" : "AB654321B",
-          |  "scottish_income_tax" : {
+          |  "taxYear" : 2018,
+          |  "income_tax" : {
           |    "payload" : {
           |      "scottish_intermediate_rate_tax" : {
           |        "amount" : 4080.3,
@@ -564,7 +564,7 @@ class PAYETransformerTest extends UnitSpec with PAYETransformer with GuiceOneApp
       val transformedJson = middleTierJson(nino, 2018).transformScottishIncome(payeJson).omitEmpty
       transformedJson should be(Json.parse(expectedScottishJson))
 
-      // println(Json.prettyPrint(transformedJson))
+      //println(Json.prettyPrint(transformedJson))
 
     }
   }

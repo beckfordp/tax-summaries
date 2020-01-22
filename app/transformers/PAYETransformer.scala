@@ -58,7 +58,6 @@ object PAYETransformer {
       "income_data"        -> Json.obj("payload" -> Json.obj()),
       "income_tax"         -> Json.obj("payload" -> Json.obj(), "rates" -> Json.obj()),
       "summary_data"       -> Json.obj("payload" -> Json.obj(), "rates" -> Json.obj()),
-      "scottish_income_tax"-> Json.obj("payload" -> Json.obj(), "rates" -> Json.obj()),
       "gov_spending"       -> Json.obj()
     )
 
@@ -329,85 +328,85 @@ object PAYETransformer {
 
       val jsonTransformer =
         appendAttribute(
-          __ \ 'scottish_income_tax \ 'payload,
+          __ \ 'income_tax \ 'payload,
           middleTierAmountJson("scottish_starter_income", scottishStarterIncome.getOrElse(0))) andThen
           appendAttribute(
-        __    \ 'scottish_income_tax \ 'payload,
+        __    \ 'income_tax \ 'payload,
             middleTierAmountJson("scottish_starter_rate_tax", scottishStarterRateTax.getOrElse(0))) andThen
           appendAttribute(
-        __   \ 'scottish_income_tax \ 'rates,
+        __   \ 'income_tax \ 'rates,
             middleTierRateJson("scottish_starter_rate", scottishStarterRate.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("scottish_basic_income", scottishBasicIncome.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("scottish_basic_rate_tax", scottishBasicRateTax.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'rates,
+            __ \ 'income_tax \ 'rates,
             middleTierRateJson("scottish_basic_rate", scottishBasicRate.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("scottish_intermediate_income", scottishIntermediateIncome.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("scottish_intermediate_rate_tax", scottishIntermediateRateTax.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'rates ,
+            __ \ 'income_tax \ 'rates ,
             middleTierRateJson("scottish_intermediate_rate", scottishIntermediateRate.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("scottish_higher_income", scottishHigherIncome.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("scottish_higher_rate_tax", scottishHigherRateTax.getOrElse(0))) andThen
           appendAttribute(
-            __     \ 'scottish_income_tax \ 'rates,
+            __     \ 'income_tax \ 'rates,
             middleTierRateJson("scottish_higher_rate", scottishHigherRate.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("basic_rate_income_tax_amount", basicRateTaxAmount.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'rates,
+            __ \ 'income_tax \ 'rates,
             middleTierRateJson("basic_rate_income_tax_rate", basicRate.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("basic_rate_income_tax", basicRateTax.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("higher_rate_income_tax_amount", higherRateTaxAmount.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("higher_rate_income_tax", higherRateTax.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'rates,
+            __ \ 'income_tax \ 'rates,
             middleTierRateJson("higher_rate_income_tax_rate", higherRate.getOrElse(0))) andThen
           appendAttribute(
-        __ \ 'scottish_income_tax \ 'payload,
+        __ \ 'income_tax \ 'payload,
             middleTierAmountJson("ordinary_rate_amount", dividendLowRateTaxAmount.getOrElse(0))) andThen
           appendAttribute(
-          __ \ 'scottish_income_tax \ 'payload,
+          __ \ 'income_tax \ 'payload,
             middleTierAmountJson("ordinary_rate", dividendLowRateTax.getOrElse(0))) andThen
           appendAttribute(
-          __ \ 'scottish_income_tax \ 'rates,
+          __ \ 'income_tax \ 'rates,
             middleTierRateJson("ordinary_rate_tax_rate", dividendLowRate.getOrElse(0))) andThen
           appendAttribute(
-        __ \ 'scottish_income_tax \ 'payload,
+        __ \ 'income_tax \ 'payload,
             middleTierAmountJson("upper_rate_amount", dividendHigherRateTaxAmount.getOrElse(0))) andThen
           appendAttribute(
-          __ \ 'scottish_income_tax \ 'payload,
+          __ \ 'income_tax \ 'payload,
             middleTierAmountJson("upper_rate", dividendHigherRateTax.getOrElse(0))) andThen
           appendAttribute(
-          __ \ 'scottish_income_tax \ 'rates,
+          __ \ 'income_tax \ 'rates,
             middleTierRateJson("upper_rate_rate", dividendHigherRate.getOrElse(0)))andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("married_couples_allowance_adjustment", marriedCouplesAllowanceAdjust.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("marriage_allowance_received_amount", marriedCouplesAllowanceReceived.getOrElse(0))) andThen
           appendAttribute(
-            __ \ 'scottish_income_tax \ 'payload,
+            __ \ 'income_tax \ 'payload,
             middleTierAmountJson("scottish_income_tax", totalScottishIncomeTax.getOrElse(0)))
 
       safeTransform(jsonTransformer)
